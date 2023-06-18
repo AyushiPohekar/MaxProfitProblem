@@ -61,6 +61,10 @@ function InputValue() {
   let flag = 0;
 
   count_while = 0;
+  let solution1 = document.getElementById("solution1");
+  let solution2 = document.getElementById("solution2");
+  solution1.innerHTML=""
+  solution2.innerHTML=""
 
   let i = 0;
   while (input > 4) {
@@ -74,17 +78,20 @@ function InputValue() {
     );
     i++;
   }
+  console.log("flag",flag)
   let earning = (document.getElementById("sum").innerHTML = `$${sum}`);
-  let solution = document.getElementById("solution");
+  
 
 
   //flag=1 indicates multiple outputs.
   if (flag == 1) {
-    solution.innerHTML = `Multiple Possible Solution:
-     Solution1=>T:${T_Count},P:${P_Count},C:${C_Count}
-     Solution2=>T:${T_Count - 1},P:${P_Count + 1},C:${C_Count}`;
+    solution1.innerHTML = `Multiple Possible Solutions:
+     Solution1=>T:${T_Count},P:${P_Count},C:${C_Count}`;
+
+   solution2.innerHTML=
+     `Solution2=>T:${T_Count - 1},P:${P_Count + 1},C:${C_Count}`;
   } else {
-    solution.innerHTML = `T:${T_Count},P:${P_Count},C:${C_Count}`;
+    solution1.innerHTML = `Solution1=>T:${T_Count},P:${P_Count},C:${C_Count}`;
   }
 
   console.log(sum);
