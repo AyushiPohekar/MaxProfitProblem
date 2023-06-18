@@ -1,7 +1,15 @@
-//Possibility of Multiple Outputs:There are 3 possible combinations for multiple outputs.
-//Theatre+Pub=7units //we will calculate
-//Pub+Commercial Park=13 units //Here Theatre gives maximum value
-//Theatre+Commercial=15 units 
+//Starting from day 1, we calculate which of the three choices (i.e. theatre/pub/commercial park) will give the 
+//max earning at 'stage1' and update the cost and the choice. For example- On day one, for maximum earning we decide that Theatre is
+//built first, then we deduct the 5 days (i.e. the time taken to build theatre) from total days to calculate the remaining days
+//for the stage 2 and then again calcualte which is the most profitable choice to build for stage2, and deduct time for completing 
+//that choice to calculate remaining days and so on till the time when remaining days <=4 (i.e. the least time required to build something)
+
+//Possibility of earnings from two of the tree options being same at any "stage":There are 3 possible combinations.
+//1) Theatre+Pub=7 days left - this will lead to multiple outputs as building theatre or pub is equally profitable
+//2) Pub+Commercial Park=13 days left - Here Theatre gives maximum value of earning so both Pub and and commercial park are not outputs
+//3) Theatre+Commercial=15 units left - At this stage- both theatre and conference park will give same earning at that stage but choosing 
+    //theatre at that stage will give more "overall profit" since there will be option to earn more in next stages- so Theatre option wins 
+    //in case of a tie of earnings between theatre and commerical park at any stage
 
 function MaxProfit(input1, flag, T_Count, P_Count, C_Count, sum) {
   let T_Earn;
@@ -42,7 +50,8 @@ function MaxProfit(input1, flag, T_Count, P_Count, C_Count, sum) {
       input1 = input1 - 4;
       P_Count++;
     } else {
-      //since I wrote else,this is important for Pub+Commercial once T_Earn is maximum,it won't go in else block and C_count is not updated
+      //since I wrote else,this is important in case of Theatre Vs Commercial Park Tie, 
+      //once T_Earn is maximum,code flow won't go in else block and C_count is not updated
       input1 = input1 - 10;
       C_Count++;
     }
